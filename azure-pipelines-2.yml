@@ -21,16 +21,34 @@ strategy:
 
 steps:
 - task: UsePythonVersion@0
+
+
   inputs:
+
+
     versionSpec: '$(python.version)'
+
+
   displayName: 'Use Python $(python.version)'
 
-- script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-  displayName: 'Install dependencies'
 
-- script: |
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'pytest'
+- script: python "sum.py"
+
+
+
+- task: PythonScript@0
+
+
+  inputs:
+
+
+    scriptSource: 'inline'
+
+
+    script: |
+
+
+      print('Hello world 1')
+
+
+      print('KLU')
